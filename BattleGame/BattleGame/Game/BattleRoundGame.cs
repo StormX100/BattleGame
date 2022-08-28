@@ -1,5 +1,5 @@
 ﻿using BattleGame.Game.Commands;
-using BattleGame.Game.OptionsMenu;
+using BattleGame.Game.Options;
 using BattleGame.Model;
 using System;
 using System.Collections.Generic;
@@ -24,27 +24,25 @@ namespace BattleGame.Game
         {
             while(FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
             {
-                int option = ReadOption(FirstPlayer);
-                Turn firstPlayerTurn = new Turn(FirstPlayer, SecondPlayer, option);
-
-                option = ReadOption(SecondPlayer);
-                Turn SecondPlayerTurn = new Turn(SecondPlayer, FirstPlayer, option);
+                AllAttackTypes firstPlayerOption = ReadOption(FirstPlayer);
+                AllAttackTypes secondPlayerOption = ReadOption(SecondPlayer);                               
             }
         }
 
-        private int ReadOption(IPlayer player)
+        private AllAttackTypes ReadOption(IPlayer player)
         {
-            var options = OptionsMenuFactory.CreateOptionsMenu(player);
-
+            var attackTypeOptions = new AttackTypesOptionsMenu(player);
             char key;
+
             do
             {
-                Console.WriteLine(options.CreateOption());
-                key = Console.ReadKey().KeyChar;
+                Console.WriteLine(attackTypeOptions.CreateOptions());
+                key = Console.ReadKey().KeyChar;                
             }
-            while (!options.IsChosenOptionValid(key - '0'));
+            while (!attackTypeOptions.IsOptionValid(key));
+            AllAttackTypes option = attackTypeOptions.GetAttackType(key);
 
-            return key - '0';
+            return option;
         }
     }
 }
