@@ -1,4 +1,5 @@
-﻿using BattleGame.Game.Options;
+﻿using BattleGame.Game.Commands.Calculators;
+using BattleGame.Game.Options;
 using BattleGame.Model;
 using System;
 
@@ -20,7 +21,7 @@ namespace BattleGame.Game
             switch (option)
             {
                 case AllAttackTypes.Atack:
-                    IAttackCommand attackCommand = new AttackCommand(_warrior, _enemy);
+                    IAttackCommand attackCommand = new AttackCommand(_warrior, _enemy, new AttackCalculator(_warrior));
                     _warrior.SetCommand(attackCommand);
                     break;
                 default:

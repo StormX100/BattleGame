@@ -16,7 +16,7 @@ namespace BattleGame.Game
                 case PlayerType.Warrior:
                     return new WarriorCommander((IWarrior)player, enemy);
                 case PlayerType.Wizard:
-                    return new IWizardCommander((IWizard)player, enemy);
+                    return new WizardCommander((IWizard)player, enemy);
                 default:
                     return null;
             }
