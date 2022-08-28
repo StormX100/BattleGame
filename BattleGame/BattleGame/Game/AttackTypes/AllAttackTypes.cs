@@ -8,6 +8,6 @@ namespace BattleGame.Game.Options
 {
     public enum AllAttackTypes
     {
-        Atack, DealDamage, RestoreHealth, IncreaseMaxAttack, IncreaseMaxArmor
+        Atack, DealDamage, RestoreHealth, IncreaseMaxAttack, IncreaseMaxBlock
     }
 }

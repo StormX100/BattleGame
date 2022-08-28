@@ -1,4 +1,5 @@
 ﻿using BattleGame.Game;
+using BattleGame.Game.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace BattleGame.Model
 
         public PlayerType PlayerType { get; set; }
 
-        public abstract void Accept(IPlayerVisitor visitor);   
+        public abstract void Accept(IPlayerVisitor visitor);
+
+        public abstract CommandResult ExecuteCommand();
     }
 }

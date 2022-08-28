@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    public class DealDamageCommand : ICommand
+    public class DealDamageCommand : ICastCommand
     {
         public DealDamageCommand(IWizard wizard, IPlayer enemy)
         {          
         }
 
-        public void Execute()
+        public CommandResult Execute()
         {
+            return new CommandResult();
         }
     }
 }

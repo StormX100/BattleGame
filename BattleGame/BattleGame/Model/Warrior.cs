@@ -1,4 +1,5 @@
 ﻿using BattleGame.Game;
+using BattleGame.Game.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace BattleGame.Model
 {
     public class Warrior : IWarrior
     {
+        private IAttackCommand _attackCommand;
+
         public string Name { get; set; }
 
         public int Health { get; set; }
@@ -21,7 +24,12 @@ namespace BattleGame.Model
 
         public void SetCommand(IAttackCommand attackCommand)
         {
-            attackCommand.Execute();
+            _attackCommand = attackCommand;
+        }
+
+        public CommandResult ExecuteCommand()
+        {
+            return _attackCommand?.Execute();
         }
     }
 }

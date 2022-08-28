@@ -25,7 +25,10 @@ namespace BattleGame.Game
             while(FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
             {
                 AllAttackTypes firstPlayerOption = ReadOption(FirstPlayer);
-                AllAttackTypes secondPlayerOption = ReadOption(SecondPlayer);                               
+                Turn firstPlayeTurn = new Turn(FirstPlayer, SecondPlayer, firstPlayerOption);
+
+                AllAttackTypes secondPlayerOption = ReadOption(SecondPlayer);
+                Turn secondPlayeTurn = new Turn(FirstPlayer, SecondPlayer, secondPlayerOption);
             }
         }
 

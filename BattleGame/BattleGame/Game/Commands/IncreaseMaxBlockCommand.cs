@@ -13,8 +13,9 @@ namespace BattleGame.Game.Commands
         {
         }
 
-        public void Execute()
+        public CommandResult Execute()
         {
+            return new CommandResult();
         }
     }
 }

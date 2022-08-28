@@ -1,4 +1,5 @@
-﻿using BattleGame.Model;
+﻿using BattleGame.Game.Commands;
+using BattleGame.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,9 @@ namespace BattleGame.Game
             _warrior = warrior;
         }
 
-        public void Execute()
-        {    
+        public CommandResult Execute()
+        {
+            return new CommandResult();
         }
     }
 }

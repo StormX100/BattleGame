@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    class RecoverHealthCommand : ICastCommand
+    class RestoreHealthCommand : ICastCommand
     {
-        public RecoverHealthCommand(IWizard player)
+        public RestoreHealthCommand(IWizard player)
         {
         }
 
-        public void Execute()
+        public CommandResult Execute()
         {
+            return new CommandResult();
         }
     }
 }

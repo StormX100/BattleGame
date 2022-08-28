@@ -1,5 +1,4 @@
-﻿using BattleGame.Game.Commands;
-using BattleGame.Model;
+﻿using BattleGame.Game.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game
 {
-    public interface ICommand
+    public interface IPlayerCommander
     {
-        CommandResult Execute();
+        public void SetCommand(AllAttackTypes option);
     }
 }

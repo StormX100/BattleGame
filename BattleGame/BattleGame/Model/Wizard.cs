@@ -10,6 +10,8 @@ namespace BattleGame.Model
 {
     public class Wizard : IWizard
     {
+        private ICommand _castCommand;
+
         public string Name { get; set; }
 
         public int Health { get; set; }
@@ -22,7 +24,12 @@ namespace BattleGame.Model
 
         public void SetCommand(ICastCommand castCommand)
         {
-            castCommand.Execute();
+            _castCommand = castCommand;
+        }
+
+        public CommandResult ExecuteCommand()
+        {
+            return _castCommand.Execute();
         }
     }
 }

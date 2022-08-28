@@ -1,4 +1,5 @@
 ﻿using BattleGame.Game;
+using BattleGame.Game.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace BattleGame.Model
         public int MaxBlock { get; set; }
 
         public PlayerType PlayerType { get; set; }
+
+        public CommandResult ExecuteCommand();
     }
 }
