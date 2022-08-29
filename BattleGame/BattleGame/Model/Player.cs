@@ -20,8 +20,6 @@ namespace BattleGame.Model
 
         public PlayerType PlayerType { get; set; }
 
-        public abstract void Accept(IPlayerVisitor visitor);
-
         public abstract CommandResult ExecuteCommand();
     }
 }

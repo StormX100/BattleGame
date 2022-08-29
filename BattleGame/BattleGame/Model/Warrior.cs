@@ -22,6 +22,19 @@ namespace BattleGame.Model
 
         public PlayerType PlayerType { get; set; }
 
+        public IWeapon Weapon { get; }
+
+        public Warrior(IWeapon weapon)
+        {
+            Weapon = weapon;
+        }
+
+        public int Attack()
+        {
+            Random random = new Random();
+            return random.Next(0, MaxAttack);
+        }
+
         public void SetCommand(IAttackCommand attackCommand)
         {
             _attackCommand = attackCommand;

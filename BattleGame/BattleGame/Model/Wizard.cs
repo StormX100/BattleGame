@@ -22,6 +22,12 @@ namespace BattleGame.Model
 
         public PlayerType PlayerType { get; set; }
 
+        public int DealDamage()
+        {
+            Random random = new Random();
+            return random.Next(0, MaxAttack);
+        }
+
         public void SetCommand(ICastCommand castCommand)
         {
             _castCommand = castCommand;

@@ -18,8 +18,7 @@ namespace BattleGame.Game.Commands.Calculators
 
         public int Calculate()
         {
-            Random rand = new Random();
-            return rand.Next(1, _wizard.MaxAttack);
+            return _wizard.DealDamage();
         }
     }
 }

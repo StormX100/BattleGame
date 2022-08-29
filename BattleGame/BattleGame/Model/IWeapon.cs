@@ -1,4 +1,4 @@
-﻿using BattleGame.Game.Commands;
+﻿using BattleGame.Game.Commands.WeaponTriger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model
 {
-    public interface IWizard : IPlayer
+    public interface IWeapon
     {
-        int DealDamage();
+        WeaponTriggers Trigger { get; }
 
-        void SetCommand(ICastCommand castCommand);
+        int TriggerChance { get; }
     }
 }

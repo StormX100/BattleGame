@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model
 {
-    public interface IWarrior : IPlayer
+    public interface IWarrior : IPlayer, IWeaponWielder
     {
+        int Attack();
+
         void SetCommand(IAttackCommand attackCommand);
     }
 }
