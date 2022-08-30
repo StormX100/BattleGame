@@ -9,8 +9,6 @@ namespace BattleGame.Model
 {
     public interface IWarrior : IPlayer, IWeaponWielder
     {
-        int Attack();
-
         void SetCommand(IAttackCommand attackCommand);
     }
 }

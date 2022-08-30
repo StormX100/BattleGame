@@ -10,20 +10,20 @@ namespace BattleGame.Game.Commands.WeaponTriger
 {
     public class OffensiveTriggerFactory
     {
-        private readonly WarriorAttack _warriorAttack;
+        private readonly WarriorAttackTurn _warriorAttack;
 
-        public OffensiveTriggerFactory(WarriorAttack warriorAttack)
+        public OffensiveTriggerFactory(WarriorAttackTurn warriorAttack)
         {
             _warriorAttack = warriorAttack;
         }
 
-        public IOffensiveTrigger CreateTrigger(WeaponTriggers weaponTriger)
+        public IOffensiveTrigger CreateTrigger(WeaponsTrigger weaponTriger)
         {
             switch(weaponTriger)
             {
-                case WeaponTriggers.DoubleAttack:
+                case WeaponsTrigger.DoubleAttack:
                     return new DoubleAttackTrigger(_warriorAttack);
-                case WeaponTriggers.BonusDamage:
+                case WeaponsTrigger.BonusDamage:
                     return new BonusDamageTrigger(_warriorAttack);
                 default:
                     return null;

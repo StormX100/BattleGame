@@ -9,8 +9,6 @@ namespace BattleGame.Model
 {
     public interface IWizard : IPlayer
     {
-        int DealDamage();
-
         void SetCommand(ICastCommand castCommand);
     }
 }

@@ -9,7 +9,7 @@ namespace BattleGame.Game.Commands.WeaponTriger
 {
     public interface IWeaponTrigger
     {
-        WeaponTriggers Trigger { get; }
+        WeaponsTrigger Trigger { get; }
 
         void Execute();
     }

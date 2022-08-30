@@ -8,7 +8,7 @@ namespace BattleGame.Model.Weapons
 {
     class Butterfly : IWeapon
     {
-        public WeaponTriggers Trigger => WeaponTriggers.EvadeAttack;
+        public WeaponsTrigger Trigger => WeaponsTrigger.EvadeAttack;
 
         public int TriggerChance => 30;
     }

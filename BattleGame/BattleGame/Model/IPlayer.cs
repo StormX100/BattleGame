@@ -10,16 +10,20 @@ namespace BattleGame.Model
 {
     public interface IPlayer
     {
-        public string Name { get; set; }
+        string Name { get; set; }
 
-        public int Health { get; set; }
+        int Health { get; set; }
 
-        public int MaxAttack { get; set; }
+        int MaxAttack { get; set; }
 
-        public int MaxBlock { get; set; }
+        int MaxBlock { get; set; }
 
-        public PlayerType PlayerType { get; set; }
+        int MinAttack { get; set; }
 
-        public CommandResult ExecuteCommand();
+        int MinBlock { get; set; }
+
+        PlayerType PlayerType { get; set; }
+
+        CommandResult ExecuteCommand();
     }
 }

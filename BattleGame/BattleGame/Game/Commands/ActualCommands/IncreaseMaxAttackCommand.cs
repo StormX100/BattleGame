@@ -1,4 +1,5 @@
 ﻿
+using BattleGame.Game.Commander;
 using BattleGame.Game.Commands.Calculators;
 using BattleGame.Model;
 using System;
@@ -11,19 +12,19 @@ namespace BattleGame.Game.Commands
 {
     class IncreaseMaxAttackCommand : ICastCommand
     {
+        private readonly PlayerAttackTurn _playeAttackTurn;
         private readonly IWizard _wizard;
-        private readonly IncreaseMaxAttackCalculator _calculator;
 
-        public IncreaseMaxAttackCommand(IWizard wizard, IncreaseMaxAttackCalculator calculator)
+        public IncreaseMaxAttackCommand(PlayerAttackTurn playeAttackTurn, IWizard wizard)
         {
+            _playeAttackTurn = playeAttackTurn;
             _wizard = wizard;
-            _calculator = calculator;
         }
 
         public CommandResult Execute()
         {
-            _wizard.MaxAttack += _calculator.Calculate();
-            return new CommandResult();
+            _wizard.MaxAttack += _playeAttackTurn.Value;
+            return new CommandResult() { PlayerAttackTurn = _playeAttackTurn };
         }
     }
 }

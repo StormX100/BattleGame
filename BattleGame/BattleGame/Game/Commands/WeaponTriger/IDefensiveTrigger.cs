@@ -5,12 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleGame.Model
+namespace BattleGame.Game.Commands
 {
-    public interface IWeapon
+    public interface IDefensiveTrigger : IWeaponTrigger
     {
-        WeaponsTrigger Trigger { get; }
-
-        int TriggerChance { get; }
     }
 }

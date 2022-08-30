@@ -8,7 +8,7 @@ namespace BattleGame.Model.Weapons
 {
     class MonkeyKingBar : IWeapon
     {
-        public WeaponTriggers Trigger => WeaponTriggers.IncreaseMaxAttack;
+        public WeaponsTrigger Trigger => WeaponsTrigger.IncreaseMaxAttack;
 
         public int TriggerChance => 50;
     }

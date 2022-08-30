@@ -17,9 +17,8 @@ namespace BattleGame.Game
         {
             switch (player.PlayerType)
             {
-                case PlayerType.Warrior:
-                    var triggerHandler = new WeaponTriggerHandler();
-                    return new WarriorCommander((IWarrior)player, enemy, new AttackCalculator((IWarrior)player, triggerHandler));
+                case PlayerType.Warrior:               
+                    return new WarriorCommander((IWarrior)player, enemy);
                 case PlayerType.Wizard:
                     return new WizardCommander((IWizard)player, enemy);
                 default:

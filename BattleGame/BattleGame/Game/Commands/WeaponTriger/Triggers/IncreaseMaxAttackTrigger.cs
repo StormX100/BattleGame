@@ -11,11 +11,11 @@ namespace BattleGame.Game.Commands.WeaponTriger
     public class IncreaseMaxAttackTrigger : ISelfOffensiveTrigger
     {
         private readonly IWarrior _warrior;
-        private readonly WarriorAttack _warriorAttack;
+        private readonly WarriorAttackTurn _warriorAttack;
 
-        public WeaponTriggers Trigger { get => WeaponTriggers.IncreaseMaxAttack; }
+        public WeaponsTrigger Trigger { get => WeaponsTrigger.IncreaseMaxAttack; }
 
-        public IncreaseMaxAttackTrigger(IWarrior warrior, WarriorAttack warriorAttack)
+        public IncreaseMaxAttackTrigger(IWarrior warrior, WarriorAttackTurn warriorAttack)
         {
             _warrior = warrior;
             _warriorAttack = warriorAttack;
@@ -23,9 +23,12 @@ namespace BattleGame.Game.Commands.WeaponTriger
 
         public void Execute()
         {
-            _warrior.MaxAttack += 10;
-            _warriorAttack.IncreasedValue += 10;
-            _warriorAttack.Trigger = WeaponTriggers.IncreaseMaxAttack;
+            int increasedMaxAttack = 20;
+
+            _warrior.MaxAttack += increasedMaxAttack;
+            _warrior.MinAttack += increasedMaxAttack;
+            _warriorAttack.IncreasedValue += increasedMaxAttack;
+            _warriorAttack.Trigger = WeaponsTrigger.IncreaseMaxAttack;
         }
     }
 }

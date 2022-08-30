@@ -11,6 +11,6 @@ namespace BattleGame.Model.Weapons
     {
         public int TriggerChance => 30;
 
-        WeaponTriggers IWeapon.Trigger => WeaponTriggers.DoubleAttack;
+        WeaponsTrigger IWeapon.Trigger => WeaponsTrigger.DoubleAttack;
     }
 }

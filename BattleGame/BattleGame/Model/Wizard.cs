@@ -8,34 +8,18 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model
 {
-    public class Wizard : IWizard
+    public class Wizard : Player, IWizard
     {
         private ICommand _castCommand;
-
-        public string Name { get; set; }
-
-        public int Health { get; set; }
-
-        public int MaxAttack { get; set; }
-
-        public int MaxBlock { get; set; }
-
-        public PlayerType PlayerType { get; set; }
-
-        public int DealDamage()
-        {
-            Random random = new Random();
-            return random.Next(0, MaxAttack);
-        }
 
         public void SetCommand(ICastCommand castCommand)
         {
             _castCommand = castCommand;
-        }
+        }  
 
-        public CommandResult ExecuteCommand()
+        public override CommandResult ExecuteCommand()
         {
-            return _castCommand.Execute();
+            return _castCommand?.Execute();
         }
     }
 }

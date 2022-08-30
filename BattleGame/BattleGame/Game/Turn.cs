@@ -23,12 +23,13 @@ namespace BattleGame.Game
             _attackType = attackType;
         }
 
-        public TurnResult Start()
+        public CommandResult Start()
         {
             IPlayerCommander commander = CommandFactoyCreator.GetCommandFactory(_player, _enemy);
             commander.SetCommand(_attackType);
+            var commandResult = _player.ExecuteCommand();
 
-            return new TurnResult();
+            return commandResult;
         }        
     }
 }

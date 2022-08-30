@@ -1,4 +1,8 @@
-﻿using BattleGame.Game.Commands.Calculators;
+﻿using BattleGame.Game.Commander;
+using BattleGame.Game.Commands.Calculators;
+using BattleGame.Game.Commands.WeaponTriger;
+using BattleGame.Game.Commands.WeaponTriger.Factory;
+using BattleGame.Game.Options;
 using BattleGame.Model;
 using System;
 using System.Collections.Generic;
@@ -10,27 +14,59 @@ namespace BattleGame.Game.Commands
 {
     public class DealDamageCommand : ICastCommand
     {
-        private readonly IWizard _wizard;
+        private readonly PlayerAttackTurn _playerAttack;
         private readonly IPlayer _enemy;
-        private readonly DealDamageCalculator _calculator;
+        private readonly WeaponTriggerHandler _triggerHandler;
+        private readonly Random _random;
 
-        public DealDamageCommand(IWizard wizard, IPlayer enemy, DealDamageCalculator calculator)
+        public DealDamageCommand(PlayerAttackTurn playerAttack, IPlayer enemy, WeaponTriggerHandler triggerHandler, Random random)
         {
-            _wizard = wizard;
+            _playerAttack = playerAttack;
             _enemy = enemy;
-            _calculator = calculator;
+            _triggerHandler = triggerHandler;
+            _random = random;
         }
 
         public CommandResult Execute()
         {
-            var damage = _calculator.Calculate();
+            PlayerDefenseTurn playerDefense = new PlayerDefenseTurn() { Player = _enemy, Action = Options.AllAttackTypes.DealDamage };
+            CommandResult commandResult = new CommandResult() { PlayerAttackTurn = _playerAttack, PlayerDefenseTurn = playerDefense };
 
-            if (damage > _enemy.MaxBlock)
+            if (_enemy is IWarrior enemyWarrior)
             {
-                _enemy.Health = damage - _enemy.MaxBlock;
+                WarriorDefence warriorDefense = new WarriorDefence() { Player = _enemy, Action = AllAttackTypes.Atack };
+
+                SelfDefensiveTriggerFactory selfDefensiveTriggerFactory = new SelfDefensiveTriggerFactory(enemyWarrior, warriorDefense);
+                ISelfDefensiveTrigger selfDefensiveTrigger = selfDefensiveTriggerFactory.CreateTrigger(enemyWarrior.Weapon.Trigger);
+                ExecuteTrigger(selfDefensiveTrigger, enemyWarrior);
+
+                playerDefense.Defense = _random.Next(0, _enemy.MaxBlock);
+
+                DefensiveTriggerFactoy defensiveTriggerFactoy = new DefensiveTriggerFactoy(warriorDefense);
+                IDefensiveTrigger defensiveTrigger = defensiveTriggerFactoy.CreateTrigger(enemyWarrior.Weapon.Trigger);
+                ExecuteTrigger(defensiveTrigger, enemyWarrior);
+            }
+            else
+            {
+                playerDefense.Defense = _random.Next(0, _enemy.MaxBlock);
             }
 
-            return new CommandResult();
+            if (_playerAttack.Value > playerDefense.Defense)
+            {
+                int damage = _playerAttack.Value - playerDefense.Defense;
+                commandResult.DamageTaken = damage;
+                _enemy.Health -= damage;
+            }
+
+            return commandResult;
+        }
+
+        private void ExecuteTrigger(IWeaponTrigger trigger, IWarrior warrior)
+        {
+            if (_triggerHandler.IsTriggered(trigger, warrior.Weapon.TriggerChance))
+            {
+                trigger.Execute();
+            }
         }
     }
 }

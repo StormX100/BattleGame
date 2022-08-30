@@ -13,7 +13,7 @@ namespace BattleGame.Game.Commands
     {
         public bool IsTriggered(IWeaponTrigger weaponTrigger, int triggerChance)
         {
-            if (weaponTrigger == null || weaponTrigger.Trigger.Equals(WeaponTriggers.None))
+            if (weaponTrigger == null || weaponTrigger.Trigger.Equals(WeaponsTrigger.None))
             {
                 return false;
             }

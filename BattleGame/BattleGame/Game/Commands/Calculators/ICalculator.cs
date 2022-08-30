@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleGame.Game.Commander;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BattleGame.Game
 {
     public interface ICalculator
     {
-        public int Calculate();
+        public PlayerAttackTurn Calculate();
     }
 }

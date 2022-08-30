@@ -8,7 +8,7 @@ namespace BattleGame.Model.Weapons
 {
     class ShivasGuard : IWeapon
     {
-        public WeaponTriggers Trigger => WeaponTriggers.IncreaseMaxBlock;
+        public WeaponsTrigger Trigger => WeaponsTrigger.IncreaseMaxBlock;
 
         public int TriggerChance => 50;
     }

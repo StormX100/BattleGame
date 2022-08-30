@@ -20,6 +20,10 @@ namespace BattleGame.Model
 
         public PlayerType PlayerType { get; set; }
 
-        public abstract CommandResult ExecuteCommand();
+        public int MinAttack { get; set; }
+
+        public int MinBlock { get; set; }
+
+        public abstract CommandResult ExecuteCommand();    
     }
 }

@@ -1,4 +1,5 @@
-﻿using BattleGame.Model;
+﻿using BattleGame.Game.Commander;
+using BattleGame.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,17 @@ namespace BattleGame.Game.Commands.Calculators
     public class DealDamageCalculator
     {
         private readonly IWizard _wizard;
+        private readonly Random _random;
 
-        public DealDamageCalculator(IWizard wizard)
+        public DealDamageCalculator(IWizard wizard, Random random)
         {
             _wizard = wizard;
+            _random = random;
         }
 
-        public int Calculate()
+        public PlayerAttackTurn Calculate()
         {
-            return _wizard.DealDamage();
+            return new PlayerAttackTurn() { Player = _wizard, Value = _random.Next(0, _wizard.MaxAttack), Action = Options.AllAttackTypes.DealDamage };
         }
     }
 }

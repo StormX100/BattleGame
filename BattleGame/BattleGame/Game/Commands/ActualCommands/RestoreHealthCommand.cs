@@ -1,4 +1,5 @@
-﻿using BattleGame.Game.Commands.Calculators;
+﻿using BattleGame.Game.Commander;
+using BattleGame.Game.Commands.Calculators;
 using BattleGame.Model;
 using System;
 using System.Collections.Generic;
@@ -10,20 +11,21 @@ namespace BattleGame.Game.Commands
 {
     class RestoreHealthCommand : ICastCommand
     {
+        private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;
-        private readonly RestoreHealthCalculator _calculator;
 
-        public RestoreHealthCommand(IWizard wizard, RestoreHealthCalculator calculator)
+        public RestoreHealthCommand(PlayerAttackTurn playerAttackTurn, IWizard wizard)
         {
+            _playerAttackTurn = playerAttackTurn;
             _wizard = wizard;
-            _calculator = calculator;
+
         }
 
         public CommandResult Execute()
         {
-            _wizard.Health += _calculator.Calculate();
+            _wizard.Health += _playerAttackTurn.Value;
 
-            return new CommandResult();
+            return new CommandResult() { PlayerAttackTurn = _playerAttackTurn };
         }      
     }
 }

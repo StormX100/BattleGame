@@ -26,9 +26,11 @@ namespace BattleGame.Game
             {
                 AllAttackTypes firstPlayerOption = ReadOption(FirstPlayer);
                 Turn firstPlayeTurn = new Turn(FirstPlayer, SecondPlayer, firstPlayerOption);
+                firstPlayeTurn.Start();
 
                 AllAttackTypes secondPlayerOption = ReadOption(SecondPlayer);
-                Turn secondPlayeTurn = new Turn(FirstPlayer, SecondPlayer, secondPlayerOption);
+                Turn secondPlayeTurn = new Turn(SecondPlayer, FirstPlayer, secondPlayerOption);
+                secondPlayeTurn.Start();
             }
         }
 

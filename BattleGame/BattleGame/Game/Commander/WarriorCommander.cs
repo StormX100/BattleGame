@@ -11,22 +11,23 @@ namespace BattleGame.Game
     {
         private readonly IWarrior _warrior;
         private readonly IPlayer _enemy;
-        private readonly AttackCalculator _attackCalculator;
 
-        public WarriorCommander(IWarrior warrior, IPlayer enemy, AttackCalculator attackCalculator)
+        public WarriorCommander(IWarrior warrior, IPlayer enemy)
         {
             _warrior = warrior;
-            _enemy = enemy;
-            _attackCalculator = attackCalculator; 
+            _enemy = enemy;            
         }
 
         public void SetCommand(AllAttackTypes option)
-        {
+        {  
+            var weaponTriggerHandle = new WeaponTriggerHandler();
+            var random = new Random();
+
             switch (option)
             {
                 case AllAttackTypes.Atack:
-                    var attack = _attackCalculator.Calculate();
-                    IAttackCommand attackCommand = new AttackCommand(attack, _enemy, new WeaponTriggerHandler());
+                    var warriorAttack = new AttackCalculator(_warrior, weaponTriggerHandle, random).Calculate();
+                    IAttackCommand attackCommand = new AttackCommand(warriorAttack, _enemy, weaponTriggerHandle, random);
                     _warrior.SetCommand(attackCommand);
                     break;
                 default:

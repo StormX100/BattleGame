@@ -1,4 +1,5 @@
-﻿using BattleGame.Game.Commands;
+﻿using BattleGame.Game.Commander;
+using BattleGame.Game.Commands;
 using BattleGame.Game.Commands.Calculators;
 using BattleGame.Game.Options;
 using BattleGame.Model;
@@ -23,22 +24,30 @@ namespace BattleGame.Game
 
         public void SetCommand(AllAttackTypes option)
         {
+            var weaponTriggerHandle = new WeaponTriggerHandler();
+            var random = new Random();
+            PlayerAttackTurn playerAttackTurn = null;
+
             switch (option)
             {
                 case AllAttackTypes.DealDamage:
-                    ICastCommand dealDamageCommand = new DealDamageCommand(_wizard, _enemy, new DealDamageCalculator(_wizard));
+                    playerAttackTurn = new DealDamageCalculator(_wizard, random).Calculate();
+                    ICastCommand dealDamageCommand = new DealDamageCommand(playerAttackTurn, _enemy, weaponTriggerHandle, random);
                     _wizard.SetCommand(dealDamageCommand);
                     break;
                 case AllAttackTypes.RestoreHealth:
-                    ICastCommand restoreHealthCommand = new RestoreHealthCommand(_wizard, new RestoreHealthCalculator(_wizard));
+                    playerAttackTurn = new RestoreHealthCalculator(_wizard, random).Calculate();
+                    ICastCommand restoreHealthCommand = new RestoreHealthCommand(playerAttackTurn, _wizard);
                     _wizard.SetCommand(restoreHealthCommand);
                     break;
                 case AllAttackTypes.IncreaseMaxAttack:
-                    ICastCommand increaseMaxAttackCommand = new IncreaseMaxAttackCommand(_wizard, new IncreaseMaxAttackCalculator(_wizard));
+                    playerAttackTurn = new IncreaseMaxAttackCalculator(_wizard, random).Calculate();
+                    ICastCommand increaseMaxAttackCommand = new IncreaseMaxAttackCommand(playerAttackTurn, _wizard);
                     _wizard.SetCommand(increaseMaxAttackCommand);
                     break;
                 case AllAttackTypes.IncreaseMaxBlock:
-                    ICastCommand increaseMaxBlockCommand = new IncreaseMaxBlockCommand(_wizard, new InceraseMaxBlockCalculator(_wizard));
+                    playerAttackTurn = new InceraseMaxBlockCalculator(_wizard, random).Calculate();
+                    ICastCommand increaseMaxBlockCommand = new IncreaseMaxBlockCommand(playerAttackTurn ,_wizard);
                     _wizard.SetCommand(increaseMaxBlockCommand);
                     break;
                 default:

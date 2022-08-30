@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model
 {
-    public enum WeaponTriggers
+    public enum WeaponsTrigger
     {
-        None, DoubleAttack, EvadeAttack, BonusDamage, IncreaseMaxAttack, IncreaseMaxBlock
+        None, BonusDamage, DoubleAttack, EvadeAttack, IncreaseMaxAttack, IncreaseMaxBlock
     }
 }

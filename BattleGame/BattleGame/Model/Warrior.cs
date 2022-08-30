@@ -8,41 +8,25 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model
 {
-    public class Warrior : IWarrior
+    public class Warrior : Player, IWarrior
     {
         private IAttackCommand _attackCommand;
 
-        public string Name { get; set; }
-
-        public int Health { get; set; }
-
-        public int MaxAttack { get; set; }
-
-        public int MaxBlock { get; set; }
-
-        public PlayerType PlayerType { get; set; }
-
         public IWeapon Weapon { get; }
-
+      
         public Warrior(IWeapon weapon)
         {
             Weapon = weapon;
-        }
+        }   
 
-        public int Attack()
+        public override CommandResult ExecuteCommand()
         {
-            Random random = new Random();
-            return random.Next(0, MaxAttack);
+            return _attackCommand?.Execute();
         }
 
         public void SetCommand(IAttackCommand attackCommand)
         {
             _attackCommand = attackCommand;
-        }
-
-        public CommandResult ExecuteCommand()
-        {
-            return _attackCommand?.Execute();
         }
     }
 }

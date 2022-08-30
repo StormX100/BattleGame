@@ -5,14 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleGame.Game.Commander
+namespace BattleGame.Game.Commands
 {
-    public class WarriorAttack
+    public class WarriorDefence : PlayerDefenseTurn
     {
-        public int Attack { get; set; }
+        public WeaponsTrigger Trigger;
 
         public int IncreasedValue { get; set; }
-
-        public WeaponTriggers Trigger { get; set; }
     }
 }

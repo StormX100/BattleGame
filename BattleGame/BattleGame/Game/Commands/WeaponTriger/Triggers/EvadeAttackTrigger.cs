@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands.WeaponTriger
 {
-    class EvadeAttackTrigger : ISelfDefensiveTrigger
+    class EvadeAttackTrigger : IDefensiveTrigger
     {
-        private readonly IWarrior _warrior;
+        private readonly WarriorDefence _warriorDefense;
 
-        public WeaponTriggers Trigger => WeaponTriggers.EvadeAttack;
+        public WeaponsTrigger Trigger => WeaponsTrigger.EvadeAttack;
 
-        public EvadeAttackTrigger(IWarrior warrior)
+        public EvadeAttackTrigger(WarriorDefence warriorDefense)
         {
-            _warrior = warrior;
+            _warriorDefense = warriorDefense;
         }
 
         public void Execute()
         {
-            _warrior.MaxBlock = int.MaxValue;
+            _warriorDefense.Defense = int.MaxValue;
+            _warriorDefense.IncreasedValue = int.MaxValue;
+            _warriorDefense.Trigger = WeaponsTrigger.EvadeAttack;
         }
     }
 }

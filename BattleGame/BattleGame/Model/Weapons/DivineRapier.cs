@@ -9,7 +9,7 @@ namespace BattleGame.Model
 {
     class DivineRapier : IWeapon
     {
-        public WeaponTriggers Trigger => WeaponTriggers.BonusDamage;
+        public WeaponsTrigger Trigger => WeaponsTrigger.BonusDamage;
 
         public int TriggerChance => 30;
     }

@@ -10,20 +10,20 @@ namespace BattleGame.Game.Commands.WeaponTriger.Factory
     public class SelfDefensiveTriggerFactory
     {
         private readonly IWarrior _warrior;
+        private readonly WarriorDefence _warriorDefense;
 
-        public SelfDefensiveTriggerFactory(IWarrior warrior)
+        public SelfDefensiveTriggerFactory(IWarrior warrior, WarriorDefence warriorDefense)
         {
             _warrior = warrior;
+            _warriorDefense = warriorDefense;
         }
 
-        public ISelfDefensiveTrigger CreateTrigger(WeaponTriggers weaponTriger)
+        public ISelfDefensiveTrigger CreateTrigger(WeaponsTrigger weaponTrigger)
         {
-            switch (weaponTriger)
+            switch (weaponTrigger)
             {
-                case WeaponTriggers.DoubleAttack:
-                    return new IncreaseMaxBlockTrigger(_warrior);
-                case WeaponTriggers.EvadeAttack:
-                    return new EvadeAttackTrigger(_warrior);
+                case WeaponsTrigger.IncreaseMaxBlock:
+                    return new IncreaseMaxBlockTrigger(_warrior, _warriorDefense);
                 default:
                     return null;
             }

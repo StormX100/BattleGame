@@ -10,20 +10,20 @@ namespace BattleGame.Game.Commands.WeaponTriger
 {
     public class DoubleAttackTrigger : IOffensiveTrigger
     {
-        private WarriorAttack _warriorAttack;
+        private WarriorAttackTurn _warriorAttack;
 
-        public WeaponTriggers Trigger => WeaponTriggers.DoubleAttack;
+        public WeaponsTrigger Trigger => WeaponsTrigger.DoubleAttack;
 
-        public DoubleAttackTrigger(WarriorAttack attack)
+        public DoubleAttackTrigger(WarriorAttackTurn warriorAttack)
         {
-            _warriorAttack = attack;
+            _warriorAttack = warriorAttack;
         }
 
         public void Execute()
         {
-            _warriorAttack.IncreasedValue = _warriorAttack.Attack;
-            _warriorAttack.Attack *= 2;            
-            _warriorAttack.Trigger = WeaponTriggers.DoubleAttack;
+            _warriorAttack.Value *= 2;
+            _warriorAttack.IncreasedValue = _warriorAttack.Value;           
+            _warriorAttack.Trigger = WeaponsTrigger.DoubleAttack;
         }
     }
 }
