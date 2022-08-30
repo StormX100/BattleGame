@@ -12,7 +12,5 @@ namespace BattleGame.Game.Commands
         public PlayerAttackTurn PlayerAttackTurn { get; set; }
 
         public PlayerDefenseTurn PlayerDefenseTurn { get; set; }
-
-        public int DamageTaken { get; set; }
     }
 }

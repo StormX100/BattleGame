@@ -12,19 +12,21 @@ namespace BattleGame.Game.Commands
 {
     class IncreaseMaxAttackCommand : ICastCommand
     {
-        private readonly PlayerAttackTurn _playeAttackTurn;
+        private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;
+        private readonly IPlayer _enemy;
 
-        public IncreaseMaxAttackCommand(PlayerAttackTurn playeAttackTurn, IWizard wizard)
+        public IncreaseMaxAttackCommand(PlayerAttackTurn playerAttackTurn, IWizard wizard, IPlayer enemy)
         {
-            _playeAttackTurn = playeAttackTurn;
+            _playerAttackTurn = playerAttackTurn;
             _wizard = wizard;
+            _enemy = enemy;
         }
 
         public CommandResult Execute()
         {
-            _wizard.MaxAttack += _playeAttackTurn.Value;
-            return new CommandResult() { PlayerAttackTurn = _playeAttackTurn };
+            _wizard.MaxAttack += _playerAttackTurn.Value;
+            return new CommandResult() { PlayerAttackTurn = _playerAttackTurn, PlayerDefenseTurn = new PlayerDefenseTurn() { Player = _enemy } };
         }
     }
 }

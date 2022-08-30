@@ -13,19 +13,20 @@ namespace BattleGame.Game.Commands
     {
         private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;
+        private readonly IPlayer _enemy;
 
-        public RestoreHealthCommand(PlayerAttackTurn playerAttackTurn, IWizard wizard)
+        public RestoreHealthCommand(PlayerAttackTurn playerAttackTurn, IWizard wizard, IPlayer enemy)
         {
             _playerAttackTurn = playerAttackTurn;
             _wizard = wizard;
-
+            _enemy = enemy;
         }
 
         public CommandResult Execute()
         {
             _wizard.Health += _playerAttackTurn.Value;
 
-            return new CommandResult() { PlayerAttackTurn = _playerAttackTurn };
+            return new CommandResult() { PlayerAttackTurn = _playerAttackTurn, PlayerDefenseTurn = new PlayerDefenseTurn() { Player = _enemy } };
         }      
     }
 }

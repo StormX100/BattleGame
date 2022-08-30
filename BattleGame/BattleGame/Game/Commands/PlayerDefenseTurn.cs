@@ -12,8 +12,8 @@ namespace BattleGame.Game.Commands
     {
         public IPlayer Player { get; set; }
 
-        public AllAttackTypes Action { get; set; }
-
         public int Defense { get; set; }
+
+        public int DamageTaken { get; set; }
     }
 }

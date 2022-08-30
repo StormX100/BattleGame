@@ -25,12 +25,12 @@ namespace BattleGame.Game
 
         public CommandResult Execute()
         {
-            PlayerDefenseTurn playerDefense = new PlayerDefenseTurn() { Player = _enemy, Action = AllAttackTypes.Atack };
+            PlayerDefenseTurn playerDefense = new PlayerDefenseTurn() { Player = _enemy };
             CommandResult commandResult = new CommandResult() { PlayerAttackTurn = _warriorAttack, PlayerDefenseTurn = playerDefense };
 
             if (_enemy is IWarrior enemyWarrior)
             {
-                WarriorDefence warriorDefense = new WarriorDefence() { Player = _enemy, Action = AllAttackTypes.Atack };
+                WarriorDefence warriorDefense = new WarriorDefence() { Player = _enemy };
 
                 SelfDefensiveTriggerFactory selfDefensiveTriggerFactory = new SelfDefensiveTriggerFactory(enemyWarrior, warriorDefense);
                 ISelfDefensiveTrigger selfDefensiveTrigger = selfDefensiveTriggerFactory.CreateTrigger(enemyWarrior.Weapon.Trigger);
@@ -50,7 +50,7 @@ namespace BattleGame.Game
             if (_warriorAttack.Value > playerDefense.Defense)
             {
                 int damage = _warriorAttack.Value - playerDefense.Defense;
-                commandResult.DamageTaken = damage;
+                playerDefense.DamageTaken = damage;
                 _enemy.Health -= damage;
             }
 

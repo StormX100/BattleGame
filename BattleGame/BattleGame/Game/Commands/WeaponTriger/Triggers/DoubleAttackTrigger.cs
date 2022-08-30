@@ -21,8 +21,8 @@ namespace BattleGame.Game.Commands.WeaponTriger
 
         public void Execute()
         {
-            _warriorAttack.Value *= 2;
-            _warriorAttack.IncreasedValue = _warriorAttack.Value;           
+            _warriorAttack.IncreasedValue = _warriorAttack.Value;
+            _warriorAttack.Value *= 2;            
             _warriorAttack.Trigger = WeaponsTrigger.DoubleAttack;
         }
     }

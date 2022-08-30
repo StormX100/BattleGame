@@ -37,17 +37,17 @@ namespace BattleGame.Game
                     break;
                 case AllAttackTypes.RestoreHealth:
                     playerAttackTurn = new RestoreHealthCalculator(_wizard, random).Calculate();
-                    ICastCommand restoreHealthCommand = new RestoreHealthCommand(playerAttackTurn, _wizard);
+                    ICastCommand restoreHealthCommand = new RestoreHealthCommand(playerAttackTurn, _wizard, _enemy);
                     _wizard.SetCommand(restoreHealthCommand);
                     break;
                 case AllAttackTypes.IncreaseMaxAttack:
                     playerAttackTurn = new IncreaseMaxAttackCalculator(_wizard, random).Calculate();
-                    ICastCommand increaseMaxAttackCommand = new IncreaseMaxAttackCommand(playerAttackTurn, _wizard);
+                    ICastCommand increaseMaxAttackCommand = new IncreaseMaxAttackCommand(playerAttackTurn, _wizard, _enemy);
                     _wizard.SetCommand(increaseMaxAttackCommand);
                     break;
                 case AllAttackTypes.IncreaseMaxBlock:
                     playerAttackTurn = new InceraseMaxBlockCalculator(_wizard, random).Calculate();
-                    ICastCommand increaseMaxBlockCommand = new IncreaseMaxBlockCommand(playerAttackTurn ,_wizard);
+                    ICastCommand increaseMaxBlockCommand = new IncreaseMaxBlockCommand(playerAttackTurn ,_wizard, _enemy);
                     _wizard.SetCommand(increaseMaxBlockCommand);
                     break;
                 default:
