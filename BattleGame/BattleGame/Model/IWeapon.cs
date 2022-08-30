@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BattleGame.Model
@@ -12,5 +13,7 @@ namespace BattleGame.Model
         WeaponsTrigger Trigger { get; }
 
         int TriggerChance { get; }
+
+        string Name { get; }
     }
 }

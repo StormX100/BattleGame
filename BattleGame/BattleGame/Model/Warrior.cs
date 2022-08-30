@@ -12,12 +12,9 @@ namespace BattleGame.Model
     {
         private IAttackCommand _attackCommand;
 
-        public IWeapon Weapon { get; }
-      
-        public Warrior(IWeapon weapon)
-        {
-            Weapon = weapon;
-        }   
+        public IWeapon Weapon { get; set; }
+
+        public override PlayerType PlayerType => PlayerType.Warrior;
 
         public override CommandResult ExecuteCommand()
         {

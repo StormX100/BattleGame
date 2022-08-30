@@ -12,6 +12,8 @@ namespace BattleGame.Model
     {
         private ICommand _castCommand;
 
+        public override PlayerType PlayerType => PlayerType.Wizard;
+
         public void SetCommand(ICastCommand castCommand)
         {
             _castCommand = castCommand;

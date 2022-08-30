@@ -12,5 +12,7 @@ namespace BattleGame.Model
         public WeaponsTrigger Trigger => WeaponsTrigger.BonusDamage;
 
         public int TriggerChance => 30;
+
+        public string Name => "DivineRapier";
     }
 }

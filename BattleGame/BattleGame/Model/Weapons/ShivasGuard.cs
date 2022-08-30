@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Model.Weapons
 {
-    class ShivasGuard : IWeapon
+    public class ShivasGuard : IWeapon
     {
         public WeaponsTrigger Trigger => WeaponsTrigger.IncreaseMaxBlock;
 
         public int TriggerChance => 50;
+
+        public string Name => "ShivasGuard";
     }
 }

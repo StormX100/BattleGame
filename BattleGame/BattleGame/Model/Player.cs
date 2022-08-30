@@ -18,11 +18,11 @@ namespace BattleGame.Model
 
         public int MaxBlock { get; set; }
 
-        public PlayerType PlayerType { get; set; }
-
         public int MinAttack { get; set; }
 
         public int MinBlock { get; set; }
+
+        public abstract PlayerType PlayerType { get; }
 
         public abstract CommandResult ExecuteCommand();    
     }

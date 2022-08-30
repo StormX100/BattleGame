@@ -11,5 +11,7 @@ namespace BattleGame.Model.Weapons
         public WeaponsTrigger Trigger => WeaponsTrigger.EvadeAttack;
 
         public int TriggerChance => 30;
+
+        public string Name => "Butterfly";
     }
 }

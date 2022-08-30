@@ -12,5 +12,7 @@ namespace BattleGame.Model.Weapons
         public int TriggerChance => 30;
 
         WeaponsTrigger IWeapon.Trigger => WeaponsTrigger.DoubleAttack;
+
+        public string Name => "Daedalus";
     }
 }

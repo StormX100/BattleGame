@@ -6,6 +6,11 @@ using BattleGame.Game;
 
 using System;
 using BattleGame.Model.Weapons;
+using System.Text.Json;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using BattleGame.Json;
 
 namespace BattleGame
 {
@@ -13,8 +18,30 @@ namespace BattleGame
     {
         static void Main(string[] args)
         {
-            IPlayer firstPlayer = new Warrior(new Daedalus()) { Name = "Radu", PlayerType = PlayerType.Warrior, Health = 50, MaxAttack = 10, MaxBlock = 12 };
-            IPlayer secondPlayer = new Wizard() { Name = "Storm", PlayerType = PlayerType.Wizard, Health = 50, MaxAttack = 10, MaxBlock = 12 };
+            IPlayer firstPlayer = null;
+            IPlayer secondPlayer = null;
+            
+            using (StreamReader streamReader = new StreamReader("../../../Files/Player1.json"))
+            {
+                string json = streamReader.ReadToEnd();
+
+                var settings = new JsonSerializerSettings();
+                settings.Converters.Add(new WeaponJsonConverter());
+                settings.Converters.Add(new PlayerJsonConverter());
+
+                firstPlayer = JsonConvert.DeserializeObject<IPlayer>(json, settings);
+            }
+
+            using (StreamReader streamReader = new StreamReader("../../../Files/Player2.json"))
+            {
+                string json = streamReader.ReadToEnd();
+
+                var settings = new JsonSerializerSettings();
+                settings.Converters.Add(new WeaponJsonConverter());
+                settings.Converters.Add(new PlayerJsonConverter());
+
+                secondPlayer = JsonConvert.DeserializeObject<IPlayer>(json, settings);
+            }
 
             BattleRoundGame game = new BattleRoundGame(firstPlayer, secondPlayer);
             game.StartGame();

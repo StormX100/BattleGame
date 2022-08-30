@@ -1,0 +1,12 @@
+{
+  "Weapon": {
+    "Name": "Daedalus"
+  },
+  "Name": "Radu",
+  "Health": 50,
+  "MaxAttack": 10,
+  "MaxBlock": 12,
+  "PlayerType": "Warrior",
+  "MinAttack": 0,
+  "MinBlock": 0
+}

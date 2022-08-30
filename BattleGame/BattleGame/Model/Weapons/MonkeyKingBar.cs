@@ -11,5 +11,7 @@ namespace BattleGame.Model.Weapons
         public WeaponsTrigger Trigger => WeaponsTrigger.IncreaseMaxAttack;
 
         public int TriggerChance => 50;
+
+        public string Name => "MonkeyKingBar";
     }
 }
