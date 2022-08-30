@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    class RestoreHealthCommand : ICastCommand
+    public class RestoreHealthCommand : ICastCommand
     {
         private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;

@@ -9,9 +9,9 @@ namespace BattleGame.Game.Commands.WeaponTriger.Factory
 {
     public class DefensiveTriggerFactoy
     {
-        private readonly WarriorDefence _warriorDefense;
+        private readonly WarriorDefenceTurn _warriorDefense;
 
-        public DefensiveTriggerFactoy(WarriorDefence warriorDefense)
+        public DefensiveTriggerFactoy(WarriorDefenceTurn warriorDefense)
         {
             _warriorDefense = warriorDefense;
         }

@@ -3,6 +3,7 @@ using BattleGame.Game.Commands;
 using BattleGame.Game.Commands.WeaponTriger;
 using BattleGame.Game.Commands.WeaponTriger.Factory;
 using BattleGame.Game.Options;
+using BattleGame.Game.WeaponTrigger;
 using BattleGame.Model;
 using System;
 
@@ -12,10 +13,10 @@ namespace BattleGame.Game
     {
         private readonly WarriorAttackTurn _warriorAttack;
         private readonly IPlayer _enemy;
-        private readonly WeaponTriggerHandler _triggerHandler;
+        private readonly IWeaponTriggerHandler _triggerHandler;
         private readonly Random _random;
 
-        public AttackCommand(WarriorAttackTurn warriorAttack, IPlayer enemy, WeaponTriggerHandler triggerHandler, Random random)
+        public AttackCommand(WarriorAttackTurn warriorAttack, IPlayer enemy, IWeaponTriggerHandler triggerHandler, Random random)
         {
             _warriorAttack = warriorAttack;
             _enemy = enemy;
@@ -30,17 +31,19 @@ namespace BattleGame.Game
 
             if (_enemy is IWarrior enemyWarrior)
             {
-                WarriorDefence warriorDefense = new WarriorDefence() { Player = _enemy };
+                WarriorDefenceTurn warriorDefenseTurn = new WarriorDefenceTurn() { Player = _enemy };
 
-                SelfDefensiveTriggerFactory selfDefensiveTriggerFactory = new SelfDefensiveTriggerFactory(enemyWarrior, warriorDefense);
+                SelfDefensiveTriggerFactory selfDefensiveTriggerFactory = new SelfDefensiveTriggerFactory(enemyWarrior, warriorDefenseTurn);
                 ISelfDefensiveTrigger selfDefensiveTrigger = selfDefensiveTriggerFactory.CreateTrigger(enemyWarrior.Weapon.Trigger);
                 ExecuteTrigger(selfDefensiveTrigger, enemyWarrior);
 
                 playerDefense.Defense = _random.Next(0, _enemy.MaxBlock);
 
-                DefensiveTriggerFactoy defensiveTriggerFactoy = new DefensiveTriggerFactoy(warriorDefense);
+                DefensiveTriggerFactoy defensiveTriggerFactoy = new DefensiveTriggerFactoy(warriorDefenseTurn);
                 IDefensiveTrigger defensiveTrigger = defensiveTriggerFactoy.CreateTrigger(enemyWarrior.Weapon.Trigger);
                 ExecuteTrigger(defensiveTrigger, enemyWarrior);
+
+                commandResult.PlayerDefenseTurn = warriorDefenseTurn;
             }
             else
             {

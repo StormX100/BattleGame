@@ -1,5 +1,6 @@
 ﻿using BattleGame.Game.Commander;
 using BattleGame.Game.Commands.WeaponTriger;
+using BattleGame.Game.WeaponTrigger;
 using BattleGame.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    public class WeaponTriggerHandler
+    public class WeaponTriggerHandler : IWeaponTriggerHandler
     {
         public bool IsTriggered(IWeaponTrigger weaponTrigger, int triggerChance)
         {

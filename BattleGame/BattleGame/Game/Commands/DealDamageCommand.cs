@@ -34,7 +34,7 @@ namespace BattleGame.Game.Commands
 
             if (_enemy is IWarrior enemyWarrior)
             {
-                WarriorDefence warriorDefense = new WarriorDefence() { Player = _enemy };
+                WarriorDefenceTurn warriorDefense = new WarriorDefenceTurn() { Player = _enemy };
 
                 SelfDefensiveTriggerFactory selfDefensiveTriggerFactory = new SelfDefensiveTriggerFactory(enemyWarrior, warriorDefense);
                 ISelfDefensiveTrigger selfDefensiveTrigger = selfDefensiveTriggerFactory.CreateTrigger(enemyWarrior.Weapon.Trigger);

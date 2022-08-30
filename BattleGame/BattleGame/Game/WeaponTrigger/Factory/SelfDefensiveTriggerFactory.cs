@@ -10,9 +10,9 @@ namespace BattleGame.Game.Commands.WeaponTriger.Factory
     public class SelfDefensiveTriggerFactory
     {
         private readonly IWarrior _warrior;
-        private readonly WarriorDefence _warriorDefense;
+        private readonly WarriorDefenceTurn _warriorDefense;
 
-        public SelfDefensiveTriggerFactory(IWarrior warrior, WarriorDefence warriorDefense)
+        public SelfDefensiveTriggerFactory(IWarrior warrior, WarriorDefenceTurn warriorDefense)
         {
             _warrior = warrior;
             _warriorDefense = warriorDefense;

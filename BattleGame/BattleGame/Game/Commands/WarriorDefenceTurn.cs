@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    public class WarriorDefence : PlayerDefenseTurn
+    public class WarriorDefenceTurn : PlayerDefenseTurn
     {
         public WeaponsTrigger Trigger;
 

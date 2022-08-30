@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands.WeaponTriger
 {
-    class EvadeAttackTrigger : IDefensiveTrigger
+    public class EvadeAttackTrigger : IDefensiveTrigger
     {
-        private readonly WarriorDefence _warriorDefense;
+        private readonly WarriorDefenceTurn _warriorDefense;
 
         public WeaponsTrigger Trigger => WeaponsTrigger.EvadeAttack;
 
-        public EvadeAttackTrigger(WarriorDefence warriorDefense)
+        public EvadeAttackTrigger(WarriorDefenceTurn warriorDefense)
         {
             _warriorDefense = warriorDefense;
         }

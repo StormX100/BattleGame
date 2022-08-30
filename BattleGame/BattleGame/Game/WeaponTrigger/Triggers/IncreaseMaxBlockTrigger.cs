@@ -10,9 +10,9 @@ namespace BattleGame.Game.Commands.WeaponTriger
     public class IncreaseMaxBlockTrigger : ISelfDefensiveTrigger
     {
         private readonly IPlayer _player;
-        private readonly WarriorDefence _warriorDefense;
+        private readonly WarriorDefenceTurn _warriorDefense;
 
-        public IncreaseMaxBlockTrigger(IPlayer player, WarriorDefence warriorDefense)
+        public IncreaseMaxBlockTrigger(IPlayer player, WarriorDefenceTurn warriorDefense)
         {
             _player = player;
             _warriorDefense = warriorDefense;

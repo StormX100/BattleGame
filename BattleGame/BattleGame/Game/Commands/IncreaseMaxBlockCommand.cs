@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    class IncreaseMaxBlockCommand : ICastCommand
+    public class IncreaseMaxBlockCommand : ICastCommand
     {
         private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;

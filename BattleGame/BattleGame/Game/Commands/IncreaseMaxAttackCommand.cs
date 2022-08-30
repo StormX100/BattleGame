@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BattleGame.Game.Commands
 {
-    class IncreaseMaxAttackCommand : ICastCommand
+    public class IncreaseMaxAttackCommand : ICastCommand
     {
         private readonly PlayerAttackTurn _playerAttackTurn;
         private readonly IWizard _wizard;
