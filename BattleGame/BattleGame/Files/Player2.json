@@ -1,0 +1,9 @@
+{
+  "Name": "Storm",
+  "Health": 50,
+  "MaxAttack": 10,
+  "MaxBlock": 12,
+  "MinAttack": 0,
+  "MinBlock": 0,
+  "PlayerType": "Wizard"
+}
