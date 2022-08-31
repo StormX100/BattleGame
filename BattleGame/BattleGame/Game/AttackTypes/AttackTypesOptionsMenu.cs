@@ -35,7 +35,7 @@ namespace BattleGame.Game.Options
 
         public bool IsOptionValid(char key)
         {
-            return key - '0' >= 0 && key - '0' <= _playerAttackTypes.Count;
+            return _playerAttackTypes.Select(k => (int)k).Contains(key - '0');
         }
 
         public AllAttackTypes GetAttackType(char key)
